@@ -101,9 +101,9 @@ fi
 if [ -n "$RAMDISK_CFG" ]; then
 
 	source $TOP_DIR/buildroot/build/envsetup.sh $RAMDISK_CFG
-	CPIO_IMG=$TOP_DIR/buildroot/output/$RAMDISK_CFG/images/rootfs.cpio.gz
-	ROMFS_IMG=$TOP_DIR/buildroot/output/$RAMDISK_CFG/images/rootfs.romfs
-	TARGET_IMAGE=$TOP_DIR/buildroot/output/$RAMDISK_CFG/images/$RAMDISK_IMG
+	CPIO_IMG=$BUILDROOT_OUTPUT_DIR/images/rootfs.cpio.gz
+	ROMFS_IMG=$BUILDROOT_OUTPUT_DIR/images/rootfs.romfs
+	TARGET_IMAGE=$BUILDROOT_OUTPUT_DIR/images/$RAMDISK_IMG
 
 	if [ -z $RAMDISK_TYPE ]
 	then
@@ -121,9 +121,11 @@ if [ "$RK_RAMDISK_SECURITY_BOOTUP" = "true" ];then
 	esac
 fi
 
+BUILDROOT_DIR="${BUILDROOT_DIR:-$(pwd)/buildroot}"
+
 # build ramdisk
-echo "====Start build $RAMDISK_CFG===="
-if $TOP_DIR/buildroot/utils/brmake; then
+echo "====Start build $RAMDISK_CFG ===="
+if $TOP_DIR/buildroot/utils/brmake -C "$BUILDROOT_DIR" ; then
     echo "log saved on $TOP_DIR/br.log"
     echo "====Build $RAMDISK_CFG ok!===="
 else

@@ -1566,7 +1566,8 @@ function build_recovery(){
 #		rockdev/recovery.img
 
 	if [ -n "$RK_CFG_RECOVERY" ];then
-		cp buildroot/output/$RK_CFG_RECOVERY/images/recovery.img \
+		source $TOP_DIR/buildroot/build/envsetup.sh $RK_CFG_RECOVERY
+		cp $BUILDROOT_OUTPUT_DIR/images/recovery.img \
 			u-boot/recovery.img
 	fi
 
