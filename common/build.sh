@@ -142,6 +142,7 @@ function prebuild_uboot()
 			${RK_SPL_INI_CONFIG:+../rkbin/RKBOOT/$RK_SPL_INI_CONFIG} \
 			${RK_UBOOT_SIZE_CONFIG:+--sz-uboot $RK_UBOOT_SIZE_CONFIG} \
 			${RK_TRUST_SIZE_CONFIG:+--sz-trust $RK_TRUST_SIZE_CONFIG}"
+
 	UBOOT_COMPILE_COMMANDS="$(echo $UBOOT_COMPILE_COMMANDS)"
 
 	if [ "$RK_LOADER_UPDATE_SPL" = "true" ]; then
@@ -623,6 +624,7 @@ function build_uboot(){
 
 	echo "============Start building uboot============"
 	echo "TARGET_UBOOT_CONFIG=$RK_UBOOT_DEFCONFIG"
+	echo "RK_SPL_INI_CONFIG=$RK_SPL_INI_CONFIG"
 	echo "========================================="
 
 	cd u-boot
