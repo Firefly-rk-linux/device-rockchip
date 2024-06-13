@@ -29,7 +29,7 @@ RK_LEGACY_PARTITIONS=" \
 # for example:
 # RK_EXTRA_PARTITIONS="oem:/oem:ext2:defaults:oem_normal:256M:fixed
 # userdata:/userdata:vfat:errors=remount-ro:userdata_empty:auto"
-#RK_EXTRA_PARTITIONS="${RK_EXTRA_PARTITIONS:-$RK_LEGACY_PARTITIONS}"
+RK_EXTRA_PARTITIONS="${RK_EXTRA_PARTITIONS:-$RK_LEGACY_PARTITIONS}"
 
 function fixup_root()
 {
