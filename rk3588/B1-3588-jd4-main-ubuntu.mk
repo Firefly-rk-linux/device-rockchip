@@ -25,3 +25,6 @@ export RK_ROOTFS_SYSTEM=ubuntu
 
 # packagefile for make update image
 export RK_PACKAGE_FILE=rk3588-ubuntu-package-file
+
+#SPL_CONFIG
+export RK_SPL_INI_CONFIG=RK3588_115200MINIALL.ini
