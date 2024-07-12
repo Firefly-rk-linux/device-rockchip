@@ -3,6 +3,9 @@ CUR_DIR=`dirname $CMD`
 
 source $CUR_DIR/aio-3588jd4-buildroot.mk
 
+# Kernel defconfig fragment
+export RK_KERNEL_DEFCONFIG_FRAGMENT="$RK_KERNEL_DEFCONFIG_FRAGMENT firefly-linux.config firefly-csb1-main.config"
+
 # Kernel dts
 export RK_KERNEL_DTS=B1-3588-jd4-main
 
