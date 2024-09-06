@@ -1827,6 +1827,9 @@ function gen_file_name() {
 	if [[ -f $manifest ]]; then
 		manifest=$(basename $(realpath ${TOP_DIR}/.repo/manifest.xml) .xml)
 		sdk_version=$(echo $manifest | sed -n 's/.*[-_]\([vV][0-9.a-zA-Z]*\).*/\1/p')
+		if [ ! -n "$sdk_version" ];then
+			sdk_version="debug"
+		fi
 		IMGNAME+=_${sdk_version}
 	fi
 
