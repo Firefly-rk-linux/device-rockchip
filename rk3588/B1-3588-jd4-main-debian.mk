@@ -9,3 +9,13 @@ source $CUR_DIR/${DEVICE_NAME}-ubuntu.mk
 export RK_ROOTFS_SYSTEM=debian
 
 export RK_ROOTFS_IMG=debian/rootfs.img
+
+# recovery ramdisk
+export RK_RECOVERY_RAMDISK=
+
+# Recovery config
+export RK_CFG_RECOVERY=firefly_rk3588_abmc_main_recovery
+
+# parameter for GPT table
+export RK_PARAMETER=abmc_main_parameter-fit.txt
+
