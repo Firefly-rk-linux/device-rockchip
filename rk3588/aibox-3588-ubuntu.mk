@@ -15,7 +15,9 @@ export RK_CFG_BUILDROOT=
 export RK_OEM_DIR=
 
 #userdata config
-export RK_USERDATA_DIR=
+export RK_USERDATA_DIR=userdata_ai
+export RK_USERDATA_FS_TYPE=ext4
+export RK_USERDATA_PARTITION_SIZE=2560M
 
 # rootfs_system
 export RK_ROOTFS_SYSTEM=ubuntu
