@@ -156,9 +156,14 @@ mkimage_auto_sized()
     RETRY=0
 
     while true;do
-        EXTRA_SIZE=$(($SIZE_KB / 50))
-        SIZE_KB=$(($SIZE_KB + ($EXTRA_SIZE > 4096 ? $EXTRA_SIZE : 4096)))
-        mkimage && break
+		if [[ "$RK_USERDATA_DIR" =~ _ai   ]]; then
+        	EXTRA_SIZE=$(($SIZE_KB / 4))
+        	SIZE_KB=$(($SIZE_KB + ($EXTRA_SIZE > 512000 ? $EXTRA_SIZE : 512000)))
+		else
+			EXTRA_SIZE=$(($SIZE_KB / 50))
+        	SIZE_KB=$(($SIZE_KB + ($EXTRA_SIZE > 4096 ? $EXTRA_SIZE : 4096)))
+		fi 
+		mkimage && break
 
         RETRY=$[RETRY+1]
         [ $RETRY -gt $MAX_RETRY ] && fatal "Failed to make image!"

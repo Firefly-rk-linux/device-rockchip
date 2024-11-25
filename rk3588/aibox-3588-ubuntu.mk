@@ -17,10 +17,9 @@ export RK_OEM_DIR=
 #userdata config
 export RK_USERDATA_DIR=userdata_ai
 export RK_USERDATA_FS_TYPE=ext4
-export RK_USERDATA_PARTITION_SIZE=2560M
 
 # rootfs_system
 export RK_ROOTFS_SYSTEM=ubuntu
 
 # packagefile for make update image
-export RK_PACKAGE_FILE=rk3588-ubuntu-package-file
+export RK_PACKAGE_FILE=rk3588-ubuntu-package-file-ai
