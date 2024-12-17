@@ -1,4 +1,4 @@
-RK_KERNEL_DTS_NAME="rk3566-firefly-roc-pc-mipi101_M101014_BE45_A1"
+RK_KERNEL_DTS_NAME="rk3566-firefly-roc-pc-mipi101-BSD1218-A101KL68"
 RK_KERNEL_CFG="firefly_linux_defconfig"
 RK_USE_FIT_IMG=y
 RK_WIFIBT_TTY="ttyS1"
