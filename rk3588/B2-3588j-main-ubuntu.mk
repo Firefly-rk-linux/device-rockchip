@@ -4,7 +4,7 @@ CUR_DIR=`dirname $CMD`
 source $CUR_DIR/itx-3588j-buildroot.mk
 
 # Kernel defconfig fragment
-export RK_KERNEL_DEFCONFIG_FRAGMENT="$RK_KERNEL_DEFCONFIG_FRAGMENT"
+export RK_KERNEL_DEFCONFIG_FRAGMENT="$RK_KERNEL_DEFCONFIG_FRAGMENT  firefly-cs-main.config"
 
 export FF_EXTBOOT_SIZE=256M
 
