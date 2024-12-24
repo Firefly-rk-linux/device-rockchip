@@ -10,7 +10,7 @@ export RK_KERNEL_DEFCONFIG=firefly_linux_defconfig
 export RK_KERNEL_DEFCONFIG_FRAGMENT=rk_auto_delayline.config
 
 # Kernel dts
-export RK_KERNEL_DTS=rk3399-roc-pc-plus-mipi101-M101014_BE45_A1
+export RK_KERNEL_DTS=rk3399-roc-pc-plus-mipi101-BSD1218-A101KL68
 # DRM version
 export RK_DRM_VERSION=2
 
