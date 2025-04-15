@@ -604,6 +604,39 @@ function bundle(){
 	rm -rf $err_list
 }
 
+function github_remote_init(){
+	project_list
+	tag=$1
+	err_list=".github_remote_init.list"
+	if [ -f "$err_list" ];then
+		echo -e "${YELLOW}注意：本次从上次执行失败的仓库开始继续执行! $pro ${ALL_OFF}"
+		while_file="$err_list"
+	else
+		while_file="$list_path"
+		cp $list_path $err_list
+	fi
+
+	while read line
+	do
+		pro=$(echo $line | awk -F ' ' '{print $1}')
+		bra=$(echo $line | awk -F ' ' '{print $2}')
+		cd $pro
+
+		if git remote -v | grep -q $firefly; then
+			url=$(git remote -v | grep $firefly | grep -v $gitlab | awk -F ' ' '{print $2}' | uniq | sed "s/.*rk-linux\/\(.*\)*/\1/")
+			new_url=$(echo "$url" | sed 's/\//-/g')
+			new_url="git@github.com:Firefly-rk-linux/$new_url"
+			echo $new_url
+			gitt remote add $gitlab $new_url
+		else
+			exit -1
+		fi
+
+		cd - > /dev/null
+		sed -i "1d" $err_list
+	done < $while_file
+	rm -rf $err_list
+}
 
 function gitlab_remote_init(){
 	project_list
@@ -803,6 +836,7 @@ function usage(){
 	echo "不常用："
 	echo "$0 tag-local-firefly tag - 本地 SOC/firefly 分支打标签"
 	echo "$0 gitlab-remote-init - 初始化外部仓库 remote"
+	echo "$0 github-remote-init - 初始化外部仓库 remote"
 	echo "$0 bundle tag1 tag2 - 生成整个 repo tag1 to tag2 的 bundle"
 
 	echo -e "\nEnvironment variable："
@@ -930,6 +964,8 @@ elif [ "$para" == "reset" ];then
 	reset_manifest $2
 elif [ "$para" == "gitlab-remote-init" ];then
 	gitlab_remote_init $2
+elif [ "$para" == "github-remote-init" ];then
+	github_remote_init $2
 else
 	usage
 fi
