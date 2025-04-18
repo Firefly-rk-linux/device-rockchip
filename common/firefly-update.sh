@@ -620,13 +620,18 @@ function github_remote_init(){
 	do
 		pro=$(echo $line | awk -F ' ' '{print $1}')
 		bra=$(echo $line | awk -F ' ' '{print $2}')
+		if cat .repo/manifest.xml | grep "name=\"$pro\"" ||
+			cat .repo/manifest.xml | grep "path=\"$pro\"" ; then
+			github_url="git@github.com:Firefly-rk-linux-utils"
+		else
+			github_url="git@github.com:Firefly-rk-linux"
+		fi
 		cd $pro
 
 		if git remote -v | grep -q $firefly; then
 			url=$(git remote -v | grep $firefly | grep -v $gitlab | awk -F ' ' '{print $2}' | uniq | sed "s/.*rk-linux\/\(.*\)*/\1/")
 			new_url=$(echo "$url" | sed 's/\//-/g')
-			new_url="git@github.com:Firefly-rk-linux/$new_url"
-			echo $new_url
+			new_url="$github_url/$new_url"
 			gitt remote add $gitlab $new_url
 		else
 			exit -1
